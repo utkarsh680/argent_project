@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subscription Graphs</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1 class="navbar-title">Dashboard</h1>
+    </nav>
+
+    <div class="container">
+      <div class="header">
+        <p
+          style="
+            margin: 0 0 0 10px;
+            text-decoration: underline;
+            font-weight: 600;
+          "
+        >
+          Departments wise Spends
+        </p>
+        <div class="dropdown-container">
+          <button id="dropdownToggle">Select Departments</button>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <label><input type="checkbox" value="Admin" checked /> Admin</label>
+            <label
+              ><input type="checkbox" value="Branding" checked />
+              Branding</label
+            >
+            <label><input type="checkbox" value="HR" checked /> HR</label>
+            <label><input type="checkbox" value="Legal" checked /> Legal</label>
+            <label
+              ><input type="checkbox" value="Marketing" checked />
+              Marketing</label
+            >
+            <label><input type="checkbox" value="Sales" checked /> Sales</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card full-width">
+        <!-- Button to calculate total spend -->
+        <div style="display: flex; gap: 1rem; font-weight: 600; align-items: center;">
+          <button id="totalSpendButton">Total Spend</button>
+          <div id="totalSpendDisplay"></div>
+        </div>
+        <h2>Line Chart</h2>
+        <div id="lineChart"></div>
+      </div>
+
+      <div class="row">
+        <div class="chart-card half-width">
+          <h2>Bar Chart</h2>
+          <div id="barChart"></div>
+        </div>
+        <div class="chart-card half-width">
+          <h2>Pie Chart</h2>
+          <div id="pieChart"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="chart-card">
+          <h2>Area Chart</h2>
+          <div id="areaChart"></div>
+        </div>
+      </div>
+
+      <div class="header">
+        <p
+          style="
+            margin: 0 0 0 10px;
+            text-decoration: underline;
+            font-weight: 600;
+          "
+        >
+          City wise Spends
+        </p>
+        <div class="dropdown-container">
+          <button id="dropdownToggleCity">Select Cities</button>
+          <div class="dropdown-menu" id="dropdownMenuCity">
+            <label
+              ><input type="checkbox" value="Chennai" checked /> Chennai</label
+            >
+            <label><input type="checkbox" value="Delhi" checked /> Delhi</label>
+            <label><input type="checkbox" value="Goa" checked /> Goa</label>
+            <label><input type="checkbox" value="Kochi" checked /> Kochi</label>
+            <label
+              ><input type="checkbox" value="Mumbai" checked /> Mumbai</label
+            >
+            <label><input type="checkbox" value="Pune" checked /> Pune</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card full-width">
+        <h2>City Line Chart</h2>
+        <div id="cityLineChart"></div>
+      </div>
+
+      <div class="row">
+        <div class="chart-card half-width">
+          <h2>City Bar Chart</h2>
+          <div id="cityBarChart"></div>
+        </div>
+        <div class="chart-card half-width">
+          <h2>City Pie Chart</h2>
+          <div id="cityPieChart"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="chart-card">
+          <h2>City Area Chart</h2>
+          <div id="cityAreaChart"></div>
+        </div>
+      </div>
+
+      <!-- Combined Data Section -->
+      <div class="header">
+        <p
+          style="
+            margin: 0 0 0 10px;
+            text-decoration: underline;
+            font-weight: 600;
+          "
+        >
+          Combined Data Spends
+        </p>
+        <div style="display: flex; gap: 1rem">
+          <div class="dropdown-container">
+            <button id="dropdownToggleCombined">Select Departments</button>
+            <div class="dropdown-menu" id="dropdownMenuCombined">
+              <label
+                ><input type="checkbox" value="Admin" checked /> Admin</label
+              >
+              <label
+                ><input type="checkbox" value="Branding" checked />
+                Branding</label
+              >
+              <label><input type="checkbox" value="HR" checked /> HR</label>
+              <label
+                ><input type="checkbox" value="Legal" checked /> Legal</label
+              >
+              <label
+                ><input type="checkbox" value="Marketing" checked />
+                Marketing</label
+              >
+              <label
+                ><input type="checkbox" value="Sales" checked /> Sales</label
+              >
+            </div>
+          </div>
+          <div class="dropdown-container">
+            <button id="dropdownToggleCityCombined">Select Cities</button>
+            <div class="dropdown-menu" id="dropdownMenuCityCombined">
+              <label
+                ><input type="checkbox" value="Chennai" checked />
+                Chennai</label
+              >
+              <label
+                ><input type="checkbox" value="Delhi" checked /> Delhi</label
+              >
+              <label><input type="checkbox" value="Goa" checked /> Goa</label>
+              <label
+                ><input type="checkbox" value="Kochi" checked /> Kochi</label
+              >
+              <label
+                ><input type="checkbox" value="Mumbai" checked /> Mumbai</label
+              >
+              <label><input type="checkbox" value="Pune" checked /> Pune</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card full-width">
+        <h2>Combined Line Chart</h2>
+        <div id="combinedLineChart"></div>
+      </div>
+
+      <div class="row">
+        <div class="chart-card half-width">
+          <h2>Combined Bar Chart</h2>
+          <div id="combinedBarChart"></div>
+        </div>
+        <div class="chart-card half-width">
+          <h2>Combined Pie Chart</h2>
+          <div id="combinedPieChart"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="chart-card">
+          <h2>Combined Area Chart</h2>
+          <div id="combinedAreaChart"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

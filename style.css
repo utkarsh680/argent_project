@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+.container {
+    width: 100%; /* Use full width */
+    padding: 20px;
+}
+
+.navbar {
+    background-color: #666cff; /* Navbar background color */
+    color: white; /* Navbar text color */
+    padding: 15px; /* Padding inside navbar */
+    position: fixed; /* Fix the navbar at the top */
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+.navbar-title {
+    margin: 0; /* Remove margin */
+    font-size: 24px; /* Title font size */
+    text-align: start; /* Center the title */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between; /* Space between title and dropdown */
+    align-items: center; /* Align items vertically */
+    width: 100%; /* Full width */
+    margin-bottom: 20px; /* Space below header */
+    padding-top: 70px; /* Add padding to avoid overlap with fixed navbar */
+}
+
+h1 {
+    text-align: left; /* Left align the title */
+    margin-bottom: 0; /* Remove margin below title */
+    color: white;
+}
+
+.chart-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    flex: 1; /* Allow flex items to grow */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px; /* Add gap between flex items */
+}
+
+.half-width {
+    flex: 1;
+    min-width: 300px; /* Minimum width for responsive design */
+    margin: 10px; /* Add margin for spacing */
+}
+
+.dropdown-container {
+    position: relative;
+    margin-left: auto; /* Push dropdown to the right */
+}
+
+#dropdownToggle {
+    background: #666cff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0px 0px 0px 10px;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+#dropdownToggle:hover {
+    background: #0056b3; /* Darken on hover */
+}
+
+#dropdownToggleCity {
+    background: #666cff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0px 0px 0px 10px;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+#dropdownToggleCity:hover {
+    background: #0056b3; /* Darken on hover */
+}
+#dropdownToggleCombined {
+    background: #666cff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0px 0px 0px 10px;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+#dropdownToggleCombined:hover {
+    background: #0056b3; /* Darken on hover */
+}
+
+#dropdownToggleCityCombined {
+    background: #666cff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0px 0px 0px 10px;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+#dropdownToggleCityCombined:hover {
+    background: #0056b3; /* Darken on hover */
+}
+
+
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - -12px); /* Adjust width */
+    max-width: 200px; /* Set a max width */
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu label {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-menu label:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-container.open .dropdown-menu {
+    display: block; /* Show the dropdown when open */
+    padding: 20px;
+}
+
+.chart-card h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+#totalSpendButton {
+    padding: 4px 8px;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove borders */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+#totalSpendButton:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Optional responsive styles */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+
+    .navbar {
+        text-align: center; /* Center navbar title on smaller screens */
+    }
+}
