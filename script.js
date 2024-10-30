@@ -18,6 +18,11 @@ function renderCharts(selectedCategories) {
   const categories = filteredData.map((sub) => sub.title);
   const seriesData = filteredData.map((sub) => sub.amount);
 
+  // Calculate the total spend based on selected categories
+  const totalSpend = seriesData.reduce((acc, curr) => acc + curr, 0);
+  const formattedTotalSpend = `₹${totalSpend.toLocaleString()}`;
+  document.getElementById("totalSpendDisplay").innerText = formattedTotalSpend;
+
   if (!lineChart) {
     lineChart = new ApexCharts(document.querySelector("#lineChart"), {
       chart: { type: "line", height: 150 },
@@ -64,21 +69,6 @@ function renderCharts(selectedCategories) {
     barChart.render();
     pieChart.render();
     areaChart.render();
-    // Add event listener for the button
-    document
-      .getElementById("totalSpendButton")
-      .addEventListener("click", function () {
-        const totalSpendDisplay = document.getElementById("totalSpendDisplay");
-        const totalSpend = seriesData.reduce((acc, curr) => acc + curr, 0);
-        const formattedTotalSpend = `₹${totalSpend.toLocaleString()}`;
-
-        // Toggle the display of total spend
-        if (totalSpendDisplay.innerText === formattedTotalSpend) {
-          totalSpendDisplay.innerText = ""; // Hide the total spend
-        } else {
-          totalSpendDisplay.innerText = formattedTotalSpend; // Show the total spend
-        }
-      });
   } else {
     lineChart.updateOptions({
       series: [{ name: "Spend", data: seriesData }],
@@ -120,7 +110,6 @@ dropdownMenu.addEventListener("change", function () {
 
 // Initial render with all departments selected
 renderCharts(subscriptions.map((sub) => sub.title));
-
 // Your data for cities
 const cityData = [
   { id: 1, title: "Chennai", amount: 16756875 },
@@ -224,25 +213,37 @@ dropdownMenuCity.addEventListener("change", function () {
     this.querySelectorAll("input:checked")
   ).map((input) => input.value);
   renderCityCharts(selectedCityOptions);
+  updateCityTotalSpend(selectedCityOptions);
 });
+
+// Function to update total spend display for selected cities
+function updateCityTotalSpend(selectedCities) {
+  const filteredCityData = cityData.filter((city) =>
+    selectedCities.includes(city.title)
+  );
+  const totalSpend = filteredCityData.reduce(
+    (acc, city) => acc + city.amount,
+    0
+  );
+  const totalSpendDisplay = document.getElementById("displayTotalSpend");
+  totalSpendDisplay.innerText = `₹${totalSpend.toLocaleString()}`;
+}
 
 // Initial render with all cities selected
 renderCityCharts(cityData.map((city) => city.title));
-
+updateCityTotalSpend(cityData.map((city) => city.title));
 // Your combined data for cities and departments
 const combinedData = [
   { id: 1, city: "Chennai", department: "Admin", amount: 16756875 },
   { id: 2, city: "Delhi", department: "Legal", amount: 13677771 },
   { id: 3, city: "Goa", department: "Branding", amount: 15082251 },
-  { id: 4, city: "Kochi", department: "Sales", amount: 12666642 },
+  { id: 4, city: "Kochi", department: "Sales", amount: 18898975 },
   { id: 5, city: "Mumbai", department: "HR", amount: 11898895 },
   { id: 6, city: "Pune", department: "Marketing", amount: 13778876 },
 ];
-
 // Create combined charts
 let combinedLineChart, combinedBarChart, combinedPieChart, combinedAreaChart;
 
-// Function to render combined charts based on selected options
 function renderCombinedCharts(selectedCities, selectedDepartments) {
   const filteredData = combinedData.filter(
     (item) =>
@@ -334,6 +335,16 @@ function renderCombinedCharts(selectedCities, selectedDepartments) {
       xaxis: { categories },
     });
   }
+
+  // Update total spend display
+  updateCombinedTotalSpend(filteredData);
+}
+
+// Function to update total spend display for selected cities and departments
+function updateCombinedTotalSpend(filteredData) {
+  const totalSpend = filteredData.reduce((acc, item) => acc + item.amount, 0);
+  const totalSpendDisplay = document.getElementById("totalSpendDisplayCombine");
+  totalSpendDisplay.innerText = `₹${totalSpend.toLocaleString()}`;
 }
 
 // Event listeners for combined dropdowns

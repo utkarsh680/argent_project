@@ -64,7 +64,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px; /* Add gap between flex items */
+    gap: 1px; /* Add gap between flex items */
 }
 
 .half-width {
@@ -187,7 +187,32 @@ h1 {
 #totalSpendButton:hover {
     background-color: #45a049; /* Darker green on hover */
 }
-
+#calculateTotalSpendButton {
+    padding: 4px 8px;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove borders */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+#calculateTotalSpendButton:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+#totalSpendButtonCombine {
+    padding: 4px 8px;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove borders */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+#totalSpendButtonCombine:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
 /* Optional responsive styles */
 @media (max-width: 768px) {
     .row {
